@@ -1,0 +1,20 @@
+{
+    "nombre": "Ejercicio 2",
+    "rutas": [
+        {
+            "ruta": "mundo",
+            "icono": "world",
+            "texto": "Hola Mundo"
+        },
+        {
+            "ruta": "contador",
+            "icono": "add",
+            "texto": "Contador"
+        },
+        {
+            "ruta": "saludo",
+            "icono": "hello",
+            "texto": "Saludando"
+        }
+    ]
+}

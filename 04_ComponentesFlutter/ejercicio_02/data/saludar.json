@@ -1,0 +1,16 @@
+{
+    "nombres": [
+        {
+            "nombre": "Javier",
+            "direccion": "Celaya"
+        },
+        {
+            "nombre": "Carmen",
+            "direccion": "Sn Nicolás de los A"
+        },
+        {
+            "nombre": "Héctor",
+            "direccion": "Salvatierra"
+        }
+    ]
+}
