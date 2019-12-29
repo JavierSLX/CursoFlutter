@@ -1,4 +1,3 @@
-import 'package:componentes/src/pages/alert_page.dart';
 import 'package:componentes/src/routes/routes.dart';
 import 'package:flutter/material.dart';
  
@@ -19,9 +18,9 @@ class MyApp extends StatelessWidget {
         print(settings.name);
 
         //Reedirige la ruta de 'card'
-        return MaterialPageRoute(
-          builder: (BuildContext context) => AlertPage()
-        );
+        // return MaterialPageRoute(
+        //   builder: (BuildContext context) => AlertPage()
+        // );
       },
     );
   }
