@@ -6,7 +6,8 @@ final _icons = <String, IconData>{
   "folder_open": Icons.folder_open,
   "donut_large": Icons.donut_large,
   "input": Icons.input,
-  "slider": Icons.tune
+  "slider": Icons.tune,
+  "list": Icons.list
 };
 
 //Obtiene un widget de icono a partir de un nombre
