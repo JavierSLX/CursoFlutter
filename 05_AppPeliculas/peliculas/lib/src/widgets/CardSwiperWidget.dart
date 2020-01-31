@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:peliculas/src/models/Pelicula.dart';
 
 //Crea un widget personalizado
 class CardSwiper extends StatelessWidget {
 
   //Lista de tarjetas que va a mostrar
-  final List<dynamic> peliculas;
+  final List<Pelicula> peliculas;
 
   //Inicializando en el constructor (Hace obligatorio colocar la lista)
   CardSwiper({@required this.peliculas});
@@ -18,12 +19,17 @@ class CardSwiper extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.only(top: 10),
+      //El elemento Swiper que permite ver varias imagenes en forma de cascada
       child: Swiper(
         itemBuilder: (BuildContext context, int index){
           //Widget con border redondeados con una imagen
           return ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.network("http://via.placeholder.com/350x150",fit: BoxFit.cover,),
+            child: FadeInImage(
+              image: NetworkImage(peliculas[index].getPosterImg()),
+              placeholder: AssetImage("assets/photo.jpg"),
+              fit: BoxFit.cover,
+            )
           );
         },
         //70% del ancho
@@ -33,8 +39,6 @@ class CardSwiper extends StatelessWidget {
         //Especifica el tipo de vista de los items
         layout: SwiperLayout.STACK,
         itemCount: peliculas.length,
-        //pagination: SwiperPagination(),
-        //control: SwiperControl(),
       ),
     );
   }

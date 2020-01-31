@@ -73,4 +73,12 @@ class Pelicula
     overview = json['overview'];
     releaseDate = json['release_date'];
   }
+
+  getPosterImg()
+  {
+    if(posterPath == null)
+      return "https://www.shareicon.net/data/2015/10/14/655997_image_512x512.png";
+    else
+      return "https://image.tmdb.org/t/p/w500$posterPath";
+  }
 }
