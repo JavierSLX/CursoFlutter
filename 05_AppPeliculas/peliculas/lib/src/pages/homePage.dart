@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas/src/providers/peliculasProvider.dart';
+import 'package:peliculas/src/search/SearchDelegate.dart';
 import 'package:peliculas/src/widgets/MovieHorizontal.dart';
 import 'package:peliculas/src/widgets/cardSwiperWidget.dart';
 
@@ -9,6 +10,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    //Inicializa la informacion de populares
+    peliculaProvider.getPopulares();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Peliculas en cines"),
@@ -17,7 +22,13 @@ class HomePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: (){},
+            onPressed: (){
+              //Permite realizar la busqueda
+              showSearch(
+                context: context, 
+                delegate: DataSearch()
+                );
+            },
           )
         ],
       ),
@@ -75,12 +86,17 @@ class HomePage extends StatelessWidget {
             child: Text("Populares", style: Theme.of(context).textTheme.subhead,)
           ),
           SizedBox(height: 5,),
-          FutureBuilder(
-            future: peliculaProvider.getPopulares(),
+          //Obtiene mediante un stream las peliculas que se van a estar mostrando de manera continua
+          StreamBuilder(
+            stream: peliculaProvider.popularesStream,
             builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
               
               if(snapshot.hasData)
-                return MovieHorizontal(peliculas: snapshot.data,);
+                //Le pasa la lista y una referencia del callback que se tiene que ejecutar
+                return MovieHorizontal(
+                  peliculas: snapshot.data,
+                  siguientePagina: peliculaProvider.getPopulares,
+                  );
               else
                 return Center(child: CircularProgressIndicator());
             },
